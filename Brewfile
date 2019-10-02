@@ -1,12 +1,10 @@
 # Taps
 tap 'caskroom/cask'
-tap 'caskroom/eid'
 tap 'caskroom/fonts'
 tap 'caskroom/versions'
 tap 'homebrew/bundle'
 
 # Binaries
-brew 'awscli'
 brew 'bash' # Latest Bash version
 brew 'bat' # "cat" on steroids
 brew 'coreutils' # Those that come with macOS are outdated
@@ -14,7 +12,6 @@ brew 'git'
 brew 'gnupg2'
 brew 'grep'
 brew 'httpie'
-brew 'hub'
 brew 'mackup'
 brew 'mas' # Mac App Store manager
 brew 'pkg-config' # https://github.com/driesvints/dotfiles/issues/20
@@ -25,43 +22,36 @@ brew 'zsh'
 brew 'zsh-completions'
 
 # Development
-brew 'php'
+brew 'php' # PHP 7.3
 brew 'php@7.2'
-brew 'imagick'
+brew 'imagemagick'
 brew 'mysql'
 brew 'nginx'
 brew 'node'
 brew 'redis'
 
 # Apps
-cask 'aerial'
-cask 'alfred'
-cask 'caffeine'
-cask 'discord'
 cask 'docker'
-cask 'dropbox'
-cask 'eid-be'
-cask 'eid-be-viewer'
 cask 'firefox'
-cask 'github'
 cask 'google-backup-and-sync'
 cask 'google-chrome'
 cask 'gpg-suite'
-cask 'insomnia'
+cask 'iterm2'
 cask 'java'
-cask 'mysqlworkbench'
+cask 'navicat-premium'
 cask 'phpstorm'
+cask 'postman'
 cask 'sequel-pro'
-cask 'skype'
 cask 'slack'
-cask 'sublime-text'
-cask 'tableplus'
-cask 'there'
-cask 'tor-browser'
+cask 'spectacle'
+cask 'spotify'
+cask 'steam'
+cask 'teamviewer'
 cask 'transmit'
-cask 'vagrant'
-cask 'virtualbox'
-cask 'virtualbox-extension-pack'
+cask 'tunnelblick'
+cask 'visual-studio-code'
+cask 'vlc'
+cask 'zoomus'
 
 # Quicklook
 cask 'qlcolorcode'
@@ -81,12 +71,7 @@ cask 'font-source-serif-pro'
 
 # Mac App Store
 mas '1Password', id: 1333542190
-mas 'Byword', id: 420212497
-mas 'Giphy Capture', id: 668208984
 mas 'Keynote', id: 409183694
-mas 'Sip', id: 507257563
+mas 'LastPass', id: 926036361
 mas 'Spark', id: 1176895641
-mas 'The Unarchiver', id: 425424353
-mas 'Things', id: 904280696
-mas 'Tweetbot', id: 1384080005
 mas 'WhatsApp', id: 1147396723 
