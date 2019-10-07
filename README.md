@@ -69,6 +69,5 @@ I forked this project from [Dries Vints' dotfiles](https://github.com/driesvints
 - [Zach Holman](https://github.com/holman/dotfiles)
 - [Mathias Bynens](https://github.com/mathiasbynens/dotfiles)
 - [Sourabh Bajaj](https://twitter.com/sb2nov/) for his [Mac OS X Setup Guide](http://sourabhbajaj.com/mac-setup/)
-- [@subnixr](https://github.com/subnixr) for his [minimal Zsh theme](https://github.com/subnixr/minimal)
 - [Maxime Fabre](https://twitter.com/anahkiasen) for his [presentation on Homebrew](https://speakerdeck.com/anahkiasen/a-storm-homebrewin)
 - every single one who open-sources their dotfiles 🌍 ❤️
