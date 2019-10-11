@@ -26,7 +26,8 @@ alias nfresh="rm -rf node_modules/ package-lock.json && npm install"
 alias watch="npm run watch"
 
 # Docker
-alias docker-stop-all="docker stop $(docker ps -a -q)"
+alias docker-stop-all='docker container stop $(docker container ls -aq)'
+alias dcupd="docker-compose up -d"
 #alias dpurgecontainers="dstop && docker rm $(docker ps -a -q)"
 #alias dpurgeimages="docker rmi $(docker images -q)"
 #dbuild() { docker build -t=$1 .; }
