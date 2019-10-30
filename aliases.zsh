@@ -48,6 +48,6 @@ alias nah='git clean -df && git reset --hard'
 s4connect() {
     export S3_ACCESS_KEY=$(kubectl -n rook-ceph get secret rook-ceph-object-user-object-store-${1} -o yaml | grep AccessKey | awk '{print $2}' | base64 --decode)
     export S3_SECRET_KEY=$(kubectl -n rook-ceph get secret rook-ceph-object-user-object-store-${1} -o yaml | grep SecretKey | awk '{print $2}' | base64 --decode)
-    kubectl port-forward -n rook-ceph svc/rook-ceph-rgw-object-store 8000:80 &
 }
+alias s4pf='kubectl port-forward -n rook-ceph svc/rook-ceph-rgw-object-store 8000:80'
 alias s4='s4cmd --endpoint-url=http://localhost:8000'
