@@ -23,12 +23,14 @@ alias cfresh='rm -rf vendor/ composer.lock && composer i'
 
 # JS
 alias nfresh='rm -rf node_modules/ package-lock.json && npm install'
-alias watch='npm run watch'
+#alias watch='npm run watch'
 
 # Docker
-alias docker-stop-all='docker container stop $(docker container ls -aq)'
+alias docker-stop-all='docker container stop $(docker container ls -q) || true'
 alias dcupd='docker-compose up -d'
-dcsh() { docker exec -it $(docker ps -aqf "name=${1:-app}") bash; }
+alias dcopen='open http://${PWD##*/}.elnino-local.com'
+dcsh() { docker exec -it $(docker ps -qf "name=${1:-app}") sh; }
+dclog() { docker-compose logs ${1:-app} }
 
 # Git
 alias commit='git add . && git commit -m'
