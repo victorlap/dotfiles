@@ -1,8 +1,8 @@
 # Taps
-tap 'caskroom/cask'
-tap 'caskroom/fonts'
-tap 'caskroom/versions'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
 tap 'homebrew/bundle'
+tap 'thecasualcoder/stable'
 
 # Binaries
 brew 'bash' # Latest Bash version
@@ -60,6 +60,10 @@ cask 'qlmarkdown'
 cask 'quicklook-json'
 cask 'quicklook-csv'
 cask 'qlstephen'
+cask 'qlimagesize'
+cask 'suspicious-package'
+cask 'quicklookase'
+cask 'qlvideo'
 
 # Fonts
 cask 'font-lato'
