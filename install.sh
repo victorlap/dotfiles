@@ -17,18 +17,11 @@ brew bundle
 # Make ZSH the default shell environment
 chsh -s $(which zsh)
 
-# Install Composer
-curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
-
 # Install global Composer packages
 /usr/local/bin/composer global require hirak/prestissimo laravel/installer laravel/valet
 
 # Install Laravel Valet
 $HOME/.composer/vendor/bin/valet install
-
-# Install global NPM packages
-npm install --global yarn
 
 # Create a Sites directory
 # This is a default directory for macOS user accounts but doesn't comes pre-installed
