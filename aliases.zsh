@@ -11,14 +11,21 @@ alias zbundle='antibody bundle < $DOTFILES/zsh_plugins.txt > $DOTFILES/zsh_plugi
 alias pw='pwgen -s1 32 | pbcopy'
 bak() { cp $1{,.bak}; }
 expiry() { echo | openssl s_client -servername $1 -connect $1:443 2>/dev/null | openssl x509 -noout -enddate}
+ports() { lsof -nP -iTCP -sTCP:LISTEN | grep $1 }
+tunup () {
+    port=${1:-5000} 
+    echo "Forwarding web:5000 to local port $port"
+    ssh -R 5000:127.0.0.1:$port stunning-tarantula
+}
 
 # Directories
 alias dotfiles='cd $DOTFILES'
 alias library='cd $HOME/Library'
 alias sites='cd $HOME/Sites'
 
+
 # Laravel
-alias art='php artisan'
+alias art='docker-compose exec app php artisan'
 alias mfs='php artisan migrate:fresh --seed'
 
 # PHP
@@ -60,6 +67,11 @@ s4connect() {
 alias s4pf='kubectl port-forward -n rook-ceph svc/rook-ceph-rgw-object-store 8000:80'
 alias s4='s4cmd --endpoint-url=http://localhost:8000'
 alias s5='s5cmd --endpoint-url=http://localhost:8000'
+alias kg='kubectl get'
+kgg() {
+  kubectl get $1 | grep $2
+}
+
 
 alias loc='open https://$(basename $(pwd)).elnino-local.com'
 alias dev='open https://$(basename $(pwd)).k.elnino-dev.com'
@@ -81,4 +93,12 @@ alias pipe='open https://gitlab.elnino.tech/$(git config --get remote.origin.url
 alias pipes='open https://gitlab.elnino.tech/$(git config --get remote.origin.url | cut -d: -f2 | cut -d. -f1)/pipelines/$(glab pipeline list | grep -m1 $(git rev-parse --abbrev-ref HEAD --) | cut -d\# -f2 | cut -d\  -f1)'
 
 
-alias retry='until $@; do sleep 1; done; say Done'
+alias retry='while true; do $@; done; say Done'
+alias dbprod='kubectl -n production port-forward svc/mysql-shared 4002:3306'
+alias dbacc='kubectl -n acceptance port-forward svc/mysql-shared 4001:3306'
+alias dbdev='kubectl -n dev port-forward svc/mysql-shared 4000:3306'
+
+smartresize() {
+   mogrify -path $3 -filter Triangle -define filter:support=2 -thumbnail $2 -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 -define jpeg:fancy-upsampling=off -define png:compression-filter=5 -define png:compression-level=9 -define png:compression-strategy=1 -define png:exclude-chunk=all -interlace none -colorspace sRGB $1
+}
+

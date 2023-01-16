@@ -6,6 +6,7 @@ export PATH="$HOME/.node/bin:$PATH"
 
 # Load pip global installed binaries
 export PATH="$HOME/Library/Python/2.7/bin:$PATH"
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 
 # Use project specific binaries before global ones
 export PATH="node_modules/.bin:vendor/bin:$PATH"
@@ -17,6 +18,8 @@ export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/ruby/bin:$HOME/gems/bin:$PATH"
 export GEM_HOME=$HOME/gems
 
+# Add kubens to prompt
+export PROMPT="$PROMPT>$(kubens -c)@$(kubectx -c)"
 
 # Setup fzf
 export PATH="${PATH:+${PATH}:}/usr/local/opt/fzf/bin"
@@ -31,3 +34,6 @@ export BLACKFIRE_SERVER_ID="e4fb9a29-dfe0-4b49-a109-7d07afee7338"
 export BLACKFIRE_SERVER_TOKEN="260b1438f0c5d2bdf70b5178b67b4daf8b8871fbf9d6e6d0e9306ac3bbb18c5e"
 
 # Symfony console autocomplete
+
+# Flutter
+export PATH="$PATH:/Users/victorlap/Developer/flutter/bin"
