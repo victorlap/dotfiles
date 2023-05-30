@@ -13,7 +13,7 @@ bak() { cp $1{,.bak}; }
 expiry() { echo | openssl s_client -servername $1 -connect $1:443 2>/dev/null | openssl x509 -noout -enddate}
 ports() { lsof -nP -iTCP -sTCP:LISTEN | grep $1 }
 tunup () {
-    port=${1:-5000} 
+    port=${1:-5000}
     echo "Forwarding web:5000 to local port $port"
     ssh -R 5000:127.0.0.1:$port stunning-tarantula
 }
@@ -30,10 +30,11 @@ alias mfs='php artisan migrate:fresh --seed'
 
 # PHP
 alias cfresh='rm -rf vendor/ composer.lock && composer i'
-
+alias cscripts='cat composer.json| jq .scripts'
 # JS
 alias nfresh='rm -rf node_modules/ package-lock.json && npm install'
-#alias watch='npm run watch'
+alias watch='npm run watch'
+alias nscripts='cat package.json | jq .scripts'
 
 # Docker
 alias docker-stop-all='docker container stop $(docker container ls -q) || true'
@@ -41,7 +42,7 @@ alias dcupd='docker-compose up -d'
 alias dcopen='open http://${PWD##*/}.elnino-local.com'
 dcsh() { docker exec -it $(docker ps -qf "name=${1:-app}") sh; }
 dclog() { docker-compose logs ${1:-app} $2}
-elninoup() { cd ~/Sites/elnino/elnino-docker-dev; docker-compose up -d; cd -; docker-compose up -d }
+elninoup() { docker-compose -f ~/Sites/elnino/elnino-docker-dev/docker-compose.yaml up -d; docker-compose up -d }
 
 # Git
 alias commit='git add . && git commit -m'
@@ -68,15 +69,14 @@ alias s4pf='kubectl port-forward -n rook-ceph svc/rook-ceph-rgw-object-store 800
 alias s4='s4cmd --endpoint-url=http://localhost:8000'
 alias s5='s5cmd --endpoint-url=http://localhost:8000'
 alias kg='kubectl get'
+alias kgp='kubectl get pod'
+alias kgcm='kubectl get cm'
+alias dev='kubens dev'
+alias acc='kubens acceptance'
+alias prod='kubens production'
 kgg() {
   kubectl get $1 | grep $2
 }
-
-
-alias loc='open https://$(basename $(pwd)).elnino-local.com'
-alias dev='open https://$(basename $(pwd)).k.elnino-dev.com'
-alias acc='open https://$(basename $(pwd)).k.elnino-acceptance.com'
-alias prod='open https://$(basename $(pwd)).k.elnino-production.com'
 
 alias conf='kubectl get -o yaml cm $(basename $(pwd))-config'
 # edit project config in current namespace
@@ -93,7 +93,7 @@ alias pipe='open https://gitlab.elnino.tech/$(git config --get remote.origin.url
 alias pipes='open https://gitlab.elnino.tech/$(git config --get remote.origin.url | cut -d: -f2 | cut -d. -f1)/pipelines/$(glab pipeline list | grep -m1 $(git rev-parse --abbrev-ref HEAD --) | cut -d\# -f2 | cut -d\  -f1)'
 
 
-alias retry='while true; do $@; done; say Done'
+alias try='while true; do $@; done; say Done'
 alias dbprod='kubectl -n production port-forward svc/mysql-shared 4002:3306'
 alias dbacc='kubectl -n acceptance port-forward svc/mysql-shared 4001:3306'
 alias dbdev='kubectl -n dev port-forward svc/mysql-shared 4000:3306'

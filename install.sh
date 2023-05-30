@@ -4,7 +4,7 @@ echo "Setting up your Mac..."
 
 # Check for Homebrew and install if we don't have it
 if test ! $(which brew); then
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Update Homebrew recipes
@@ -14,14 +14,10 @@ brew update
 brew tap homebrew/bundle
 brew bundle
 
-# Make ZSH the default shell environment
-chsh -s $(which zsh)
-
-# Install global Composer packages
-/usr/local/bin/composer global require hirak/prestissimo laravel/installer laravel/valet
-
-# Install Laravel Valet
-$HOME/.composer/vendor/bin/valet install
+# Install powerlevel10k
+if test ! $(which p10k); then
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.dotfiles/themes/powerlevel10k
+fi
 
 # Create a Sites directory
 # This is a default directory for macOS user accounts but doesn't comes pre-installed
@@ -30,9 +26,6 @@ mkdir $HOME/Sites
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
 rm -rf $HOME/.zshrc
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
-
-# Symlink the Mackup config file to the home directory
-ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
 
 # Set macOS preferences
 # We will run this last because this will reload the shell
