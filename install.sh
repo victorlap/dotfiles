@@ -14,11 +14,6 @@ brew update
 brew tap homebrew/bundle
 brew bundle
 
-# Install powerlevel10k
-if test ! $(which p10k); then
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.dotfiles/themes/powerlevel10k
-fi
-
 # Create a Sites directory
 # This is a default directory for macOS user accounts but doesn't comes pre-installed
 mkdir $HOME/Sites

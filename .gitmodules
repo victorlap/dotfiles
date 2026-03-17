@@ -1,0 +1,7 @@
+[submodule "plugins/artisan"]
+	path = plugins/artisan
+	url = git@github.com:jessarcher/zsh-artisan.git
+
+[submodule "plugins/kube-aliases"]
+	path = plugins/kube-aliases
+	url = git@github.com:Dbz/kube-aliases.git

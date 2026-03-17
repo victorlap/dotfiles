@@ -17,13 +17,13 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "MacBook Victor"
-sudo scutil --set HostName "MacBook Victor"
-sudo scutil --set LocalHostName "MacBook Victor"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "MacBook Victor"
+#sudo scutil --set ComputerName "MacBook Victor"
+#sudo scutil --set HostName "MacBook Victor"
+#sudo scutil --set LocalHostName "MacBook Victor"
+#sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "MacBook Victor"
 
 # Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
+#sudo nvram SystemAudioVolume=" "
 
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
